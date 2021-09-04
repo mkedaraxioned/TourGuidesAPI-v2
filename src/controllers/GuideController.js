@@ -31,7 +31,7 @@ class GuideController {
     }
   }
 
-  updateGuidePUT = async (req,res,next) => {
+  updateGuide = async (req,res,next) => {
     try {
       const updatedGuide = await Guide.findByIdAndUpdate(req.params.id, req.body,{
         new:true,
