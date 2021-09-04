@@ -12,7 +12,8 @@ router.route('/')
 router.route('/id/:id')
 .get(guideControllerObj.findGuideById)
 .put(validateData(schemas.guide),guideControllerObj.updateGuide)
-.patch(validateData(schemas.guide),guideControllerObj.updateGuide);
+.patch(validateData(schemas.guide),guideControllerObj.updateGuide)
+.delete(guideControllerObj.deleteGuide);
 
 router.use(errorHandler);
 

@@ -44,6 +44,16 @@ class GuideController {
       next(error);
     }
   }
+
+  deleteGuide = async (req,res,next) => {
+    try {
+      const guide = await Guide.findByIdAndRemove(req.params.id);
+      if(!guide) return res.status(403).send({error:'Forbidden'});
+      return res.status(200).send({message:'Guide deleted successfully'});    
+    } catch (error) {
+      next(error);
+    }
+  }
     
 }
 module.exports = GuideController;
