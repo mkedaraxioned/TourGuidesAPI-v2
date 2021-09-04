@@ -10,5 +10,16 @@ class GuideController {
       next(error);
       }
   }
+
+  findGuideById = async (req,res,next) => {
+    try {
+      const guide = await Guide.findById(req.params.id);
+      if(!guide) return res.status(404).send({error:'Guide not found'});
+      return res.status(200).send({guide});
+    } catch (error) {
+      next(error);
+    }
+  } 
+    
 }
 module.exports = GuideController;

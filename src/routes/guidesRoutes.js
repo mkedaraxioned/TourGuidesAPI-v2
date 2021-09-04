@@ -8,6 +8,8 @@ const schemas =  require('../helpers/schema');
 const validateData = require('../middlewares/validation');
 router.route('/')
 .post(validateData(schemas.guide),guideControllerObj.addGuide);
+router.route('/id/:id')
+.get(guideControllerObj.findGuideById);
 
 router.use(errorHandler);
 
