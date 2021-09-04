@@ -6,7 +6,7 @@ const validateData = (schema) => {
     if(error) {
       const { details } = error;
       const message = details.map(i => i.message).join(',');
-      console.log(`error ${message}`);
+      if (process.env.NODE_ENV==='development') console.log(`error ${message}`);
       return res.status(422).send({error: message});
     }
     next();

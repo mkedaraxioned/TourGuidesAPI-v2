@@ -10,7 +10,8 @@ router.route('/')
 .post(validateData(schemas.guide),guideControllerObj.addGuide)
 .get(guideControllerObj.getGuides);
 router.route('/id/:id')
-.get(guideControllerObj.findGuideById);
+.get(guideControllerObj.findGuideById)
+.put(validateData(schemas.guide),guideControllerObj.updateGuidePUT);
 
 router.use(errorHandler);
 

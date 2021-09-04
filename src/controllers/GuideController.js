@@ -30,6 +30,20 @@ class GuideController {
       next(error);
     }
   }
+
+  updateGuidePUT = async (req,res,next) => {
+    try {
+      const updatedGuide = await Guide.findByIdAndUpdate(req.params.id, req.body,{
+        new:true,
+        runValidators:true,
+        useFindAndModify:false
+      });
+      if(!updatedGuide) return res.status(500).send({error : 'Internal Server Error '});
+      return res.status(200).send({msg: 'Guide Updated Successfully ',guide: updatedGuide});
+    } catch (error) {
+      next(error);
+    }
+  }
     
 }
 module.exports = GuideController;
