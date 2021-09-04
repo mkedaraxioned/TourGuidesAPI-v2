@@ -7,7 +7,8 @@ const errorHandler = require('../middlewares/error');
 const schemas =  require('../helpers/schema');
 const validateData = require('../middlewares/validation');
 router.route('/')
-.post(validateData(schemas.guide),guideControllerObj.addGuide);
+.post(validateData(schemas.guide),guideControllerObj.addGuide)
+.get(guideControllerObj.getGuides);
 router.route('/id/:id')
 .get(guideControllerObj.findGuideById);
 
